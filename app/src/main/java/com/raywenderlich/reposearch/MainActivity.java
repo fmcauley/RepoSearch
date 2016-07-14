@@ -23,6 +23,9 @@
 package com.raywenderlich.reposearch;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -73,5 +76,12 @@ public class MainActivity extends AppCompatActivity {
   }
 
   private void startDownload() {
+  }
+
+  private boolean isNetworkConnected(){
+    ConnectivityManager connMgr = (ConnectivityManager)
+            getSystemService(Context.CONNECTIVITY_SERVICE);
+    NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+    return networkInfo != null && networkInfo.isConnected();
   }
 }

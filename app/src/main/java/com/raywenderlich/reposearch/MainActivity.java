@@ -74,6 +74,14 @@ public class MainActivity extends AppCompatActivity {
     }
   }
 
+  private boolean isWfiConnected() {
+      ConnectivityManager connMgr = (ConnectivityManager)
+              getSystemService(Context.CONNECTIVITY_SERVICE);
+      NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+      return networkInfo != null && (ConnectivityManager.TYPE_WIFI == networkInfo.getType()) &&
+              networkInfo.isConnected();
+  }
+
   private boolean isNetworkConnected() {
       ConnectivityManager connMgr = (ConnectivityManager)
                 getSystemService(Context.CONNECTIVITY_SERVICE);
